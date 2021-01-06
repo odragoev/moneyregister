@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Category
+{% endblock %}
+
+{% block main %}
+    <form action="/add_category" id="add_category" method="post">
+        <div class="form-group">
+            <label> Category <br />
+                <input autocomplete="off" autofocus class="form-control" name="category" placeholder="Category" type="text"/>
+            </label>
+        </div>
+        <input type="hidden" name="pipeDelimited" value="{{pipeDelimited}}"></input>
+        <button class="btn btn-primary" type="submit">Add Category</button>
+    </form>
+    <script src="static/js/add_category.js"></script>
+{% endblock %}

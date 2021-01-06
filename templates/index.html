@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<form method="post" id="index">
+  <!-- Buttons -->
+  <div class = "buttons">
+    <button class="btn btn-primary" type="submit" name="add_transaction">Add Transaction</button>
+    <button class="btn btn-primary" type="submit" name="edit_transaction" onclick="editClicked();">Edit Transaction</button>
+    <button class="btn btn-primary" type="submit" name="remove_transaction" onclick="removeClicked();">Remove Transaction</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="title-row">Date</th>
+        <th class="title-row">Category</th>
+        <th class="title-row">Payee / Payer</th>
+        <th class="title-row">Description</th>
+        <th class="title-row">Deposit</th>
+        <th class="title-row">Payment</th>
+        <th class="title-row">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+        <tr>
+          <td>
+            <!-- Radio buttons -->
+            <div class="radio">
+              {% set checked = "" %}
+              {% if loop.index == 1 %}
+                {% set checked = "checked" %}
+              {% endif %}
+              <label>
+                <input type="radio" name="IDs" value={{transaction.ID}} id ="ID" {{checked}}>
+              </label>
+            </div>
+          </td>
+            <td>
+              <div id="date">
+                {{transaction.date}}
+              </div>
+            </td>
+            <td>
+              <div class="transaction-left">
+                {{transaction.category}}
+              </div>
+            </td>
+            <td>
+              <div class="transaction-left">
+                {{transaction.payee}}
+              </div>
+            </td>
+            <td>
+              <div class="transaction-left">
+                {{transaction.description}}
+              </div>
+            </td>
+            <td>
+              <div class="transaction-right">
+                {{transaction.deposit}}
+              </div>
+            </td>
+            <td>
+              <div class="transaction-right">
+                {{transaction.payment}}
+              </div>
+            </td>
+            <td>
+              <div class="transaction-right">
+                {{transaction.balance}}
+              </div>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</form>
+<script src="static/js/index.js"></script>
+{% endblock %}

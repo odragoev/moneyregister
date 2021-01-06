@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Category
+{% endblock %}
+
+{% block main %}
+
+<form method="post" id="category">
+  <div class = "buttons">
+    <button class="btn btn-primary" type="submit" name="add_category">Add Category</button>
+    <button class="btn btn-primary" type="submit" name="edit_category" onclick="editClicked();">Edit Category</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="title-row">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+        <tr>
+          <td>
+            <div class="radio">
+              {% set checked = "" %}
+              {% if loop.index == 1 %}
+                {% set checked = "checked" %}
+              {% endif %}
+              <label>
+                <input type="radio" name="IDs" id="ID" value={{category[0]}} {{checked}}>
+              </label>
+            </div>
+          </td>
+          <td>
+            <div id="categories_category">
+              {{category[1]}}
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+</form>
+<script src="static/js/category.js"></script>
+{% endblock %}

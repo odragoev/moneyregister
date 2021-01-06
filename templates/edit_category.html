@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Category
+{% endblock %}
+
+{% block main %}
+    <form action="/edit_category" method="post">
+        <div class="form-group">
+            <label> Category <br />
+                <input autocomplete="off" autofocus class="form-control" name="category" placeholder="Category" value="{{name}}" type="text"/>
+            </label>
+            <input type="hidden" name="id" value={{ID}}></input>
+        </div>
+        <button class="btn btn-primary" type="submit">Edit Category</button>
+    </form>
+{% endblock %}

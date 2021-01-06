@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Transaction
+{% endblock %}
+
+{% block main %}
+    <form action="/add_transaction" id="add_transaction" method="post">
+        <div class="form-group">
+            <label> Transaction Date <br />
+                <input autocomplete="off" autofocus class="form-control" name="date" placeholder="yyyy-mm-dd" type="text"/>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Category <br  />
+                <select class="form-control" name="category">
+                    <option value="" disabled selected></option>
+                    {% for category in categories %}
+                        <option value="{{category[0]}}">{{category[1]}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Payee / Payer <br />
+                <input autocomplete="off" autofocus class="form-control" name="payee" type="text"/>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Description <br />
+                <textarea autocomplete="off" autofocus class="form-control" name="description" rows=4 type="text"></textarea></textarea>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Deposit <br />
+                <input autocomplete="off" autofocus class="form-control" name="deposit" type="number" min="0" step = "0.01"/>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Payment <br />
+                <input autocomplete="off" autofocus class="form-control" name="payment" type="number" min="0" step = "0.01"/>
+            </label>
+        </div>
+        <button class="btn btn-primary" type="submit">Add Transaction</button>
+    </form>
+    <script src="static/js/add_transaction.js"></script>
+{% endblock %}
